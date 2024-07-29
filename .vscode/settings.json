@@ -1,0 +1,10 @@
+{
+    "java.project.sourcePaths": [
+        "src"
+    ],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [],
+    "editor.fontSize": 14,
+    "editor.fontFamily": "'Mono'",
+    "files.autoSave": "onWindowChange"
+}
