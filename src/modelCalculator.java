@@ -36,7 +36,6 @@ public class modelCalculator extends JFrame {
     Color hoverBackground = new Color(56, 56, 56);
     Color hoverForeground = new Color(156, 147, 146);
 
-    
     /**
      * settingFrame - sets the frame with given dimensions and tittle
      */
@@ -59,33 +58,35 @@ public class modelCalculator extends JFrame {
         }
 
     }
-    
+
     /**
-     * numbuttonsMouseAdapter - returns a MouseAdapter which sets
-     * a MouseEvent for the number buttons.
+     * numbuttonsMouseAdapter - returns a MouseAdapter which sets a MouseEvent
+     * for the number buttons.
      *
-     * @param index - the indes of numButton array
+     * @param index - the index of an element in numButtons array
      * @return MouseAdapter
      */
     public MouseAdapter numbuttonsMouseAdapter(int index) {
         return new MouseAdapter() {
             /**
              * The background and foreground of the buttons change if the mouse
-             * cursor is enterd on them. 
-             * @param e - The MouseEvent
+             * cursor is enterd on them.
+             *
+             * @param e - The event which indicates that a mouse action occurred
              */
             @Override
             public void mouseEntered(MouseEvent e) {
 
                 numButtons[index].setBackground(numbuttonsHoverColor);
                 numButtons[index].setForeground(hoverForeground);
-                
+
             }
 
             /**
-             * The background and foreground of the buttons change as it was before
-             * the mouse cursor eneterd on them, to make a hover effect. 
-             * @param e - The MouseEvent
+             * The background and foreground of the buttons change as it was
+             * before the mouse cursor eneterd on them, to make a hover effect.
+             *
+             * @param e - The event which indicates that a mouse action occurred
              */
             @Override
             public void mouseExited(MouseEvent e) {
@@ -99,10 +100,9 @@ public class modelCalculator extends JFrame {
     }
 
     /**
-     * fButtonsMouseAdapter kthene si rezultat nje MouseAdapter dhe vendos
-     * MouseEvent per butonat qe permbajne funksione (p.sh =, + ...)
-     *
-     * @param index - indexi i fButtonit
+     * fButtonsMouseAdapter - returns a MouseAdapter which sets a MouseEvent 
+     * for the function buttons
+     * @param index - the index of buttons
      * @return MouseAdapter
      */
     public MouseAdapter fbuttonsMouseAdapter(int index) {

@@ -1,3 +1,4 @@
+
 import java.awt.event.*;
 import javax.swing.JButton;
 
@@ -27,13 +28,13 @@ public class controllerCalculator extends modelCalculator implements ActionListe
      * @return void
      */
     public void functionButtons() {
-        for (int i = 0; i < fButtons.length; i++) {
-            fButtons[i].addActionListener(this);
-            fButtons[i].setFocusable(false);
+        for (JButton fButton : fButtons) {
+            fButton.addActionListener(this);
+            fButton.setFocusable(false);
         }
-        for (int i = 0; i < numButtons.length; i++) {
-            numButtons[i].addActionListener(this);
-            numButtons[i].setFocusable(false);
+        for (JButton numButton : numButtons) {
+            numButton.addActionListener(this);
+            numButton.setFocusable(false);
         }
         clearHistoryButton.addActionListener(this);
 
@@ -63,8 +64,8 @@ public class controllerCalculator extends modelCalculator implements ActionListe
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        for (int i = 0; i < fButtons.length; i++) {
-            fButtons[i].setEnabled(true);
+        for (JButton fButton : fButtons) {
+            fButton.setEnabled(true);
         }
 
         for (int i = 0; i < 10; i++) {
@@ -198,14 +199,14 @@ public class controllerCalculator extends modelCalculator implements ActionListe
                 result = num2;
                 if (textField.getText().equals("Infinity")) {
                     textField.setText("Can't divide by zero");
-                    for (int i = 0; i < fButtons.length; i++) {
-                        fButtons[i].setEnabled(false);
+                    for (JButton fButton : fButtons) {
+                        fButton.setEnabled(false);
                         isPressed = true;
                     }
                 } else if (textField.getText().equals("NaN")) {
                     textField.setText("Undefined");
-                    for (int i = 0; i < fButtons.length; i++) {
-                        fButtons[i].setEnabled(false);
+                    for (JButton fButton : fButtons) {
+                        fButton.setEnabled(false);
                         isPressed = true;
                     }
                 }
@@ -255,8 +256,8 @@ public class controllerCalculator extends modelCalculator implements ActionListe
             }
             if (s1.equals("NaN")) {
                 textField.setText("Invalid Input");
-                for (int i = 0; i < fButtons.length; i++) {
-                    fButtons[i].setEnabled(false);
+                for (JButton fButton : fButtons) {
+                    fButton.setEnabled(false);
                     isPressed = true;
                 }
             } else {
@@ -287,8 +288,8 @@ public class controllerCalculator extends modelCalculator implements ActionListe
             }
             if (s1.equals("Infinity")) {
                 textField.setText("Can't divide by zero");
-                for (int i = 0; i < fButtons.length; i++) {
-                    fButtons[i].setEnabled(false);
+                for (JButton fButton : fButtons) {
+                    fButton.setEnabled(false);
                     isPressed = true;
                 }
             } else {
@@ -316,8 +317,8 @@ public class controllerCalculator extends modelCalculator implements ActionListe
                 textField.setText(s1.replace(".0", ""));
             } else if (s1.equals("-Infinity") || s1.equals("NaN")) {
                 textField.setText("Invalid Input");
-                for (int i = 0; i < fButtons.length; i++) {
-                    fButtons[i].setEnabled(false);
+                for (JButton fButton : fButtons) {
+                    fButton.setEnabled(false);
                     isPressed = true;
                 }
             } else {
@@ -344,8 +345,8 @@ public class controllerCalculator extends modelCalculator implements ActionListe
                 textField.setText(s1.replace(".0", ""));
             } else if (s1.contains("-Infinity") || s1.equals("NaN")) {
                 textField.setText("Invalid Input");
-                for (int i = 0; i < fButtons.length; i++) {
-                    fButtons[i].setEnabled(false);
+                for (JButton fButton : fButtons) {
+                    fButton.setEnabled(false);
                     isPressed = true;
                 }
             } else {
@@ -456,20 +457,23 @@ public class controllerCalculator extends modelCalculator implements ActionListe
             if (s1.endsWith(".0")) {
                 textField.setText(s1.replace(".0", ""));
             }
-            if (s1.equals("Infinity")) {
-                textField.setText("Overflow");
-                for (int i = 0; i < fButtons.length; i++) {
-                    fButtons[i].setEnabled(false);
-                    isPressed = true;
+            switch (s1) {
+                case "Infinity" -> {
+                    textField.setText("Overflow");
+                    for (JButton fButton : fButtons) {
+                        fButton.setEnabled(false);
+                        isPressed = true;
+                    }
                 }
-            } else if (s1.equals("NaN")) {
-                textField.setText("Invalid Input");
-                for (JButton fButton : fButtons) {
-                    fButton.setEnabled(false);
-                    isPressed = true;
+                case "NaN" -> {
+                    textField.setText("Invalid Input");
+                    for (JButton fButton : fButtons) {
+                        fButton.setEnabled(false);
+                        isPressed = true;
+                    }
                 }
-            } else {
-                textField.setText(s1);
+                default ->
+                    textField.setText(s1);
             }
             label.setText("factorial(" + String.valueOf(num1).replace(".0", "") + ")");
             if (s1.endsWith(".0")) {
@@ -626,24 +630,18 @@ public class controllerCalculator extends modelCalculator implements ActionListe
             String s2 = String.valueOf(num2);
 
             switch (operator) {
-                case '+':
+                case '+' ->
                     result = num1 + (num2);
-                    break;
-                case '-':
+                case '-' ->
                     result = num1 - (num2);
-                    break;
-                case 'x':
+                case 'x' ->
                     result = num1 * (num2);
-                    break;
-                case '÷':
+                case '÷' ->
                     result = num1 / (num2);
-                    break;
-                case '%':
+                case '%' ->
                     result = num1 % (num2);
-                    break;
-                case '^':
+                case '^' ->
                     result = Math.pow(num1, num2);
-                    break;
             }
 
             rDouble = String.valueOf(result);
@@ -658,14 +656,14 @@ public class controllerCalculator extends modelCalculator implements ActionListe
 
             if (textField.getText().equals("Infinity")) {
                 textField.setText("Can't divide by zero");
-                for (int i = 0; i < fButtons.length; i++) {
-                    fButtons[i].setEnabled(false);
+                for (JButton fButton : fButtons) {
+                    fButton.setEnabled(false);
                     isPressed = true;
                 }
             } else if (textField.getText().equals("NaN")) {
                 textField.setText("Undefined");
-                for (int i = 0; i < fButtons.length; i++) {
-                    fButtons[i].setEnabled(false);
+                for (JButton fButton : fButtons) {
+                    fButton.setEnabled(false);
                     isPressed = true;
                 }
             }

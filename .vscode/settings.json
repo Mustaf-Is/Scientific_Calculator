@@ -5,6 +5,10 @@
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [],
     "editor.fontSize": 14,
-    "editor.fontFamily": "'Mono'",
-    "files.autoSave": "onWindowChange"
+    "editor.fontFamily": "'Tahoma'",
+    "files.autoSave": "onWindowChange",
+    "terminal.integrated.fontFamily": "'Cascadia Code'",
+    "terminal.integrated.tabs.defaultColor": "terminal.ansiGreen",
+    "terminal.integrated.drawBoldTextInBrightColors": true,
+    "terminal.integrated.localEchoStyle": "#346e0f"
 }
