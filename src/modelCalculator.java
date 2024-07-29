@@ -1,3 +1,8 @@
+/**
+ * @author Mustafë Ismajli
+ * @version 22.0.1
+ */
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
@@ -5,13 +10,11 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
- * @author Mustafë Ismajli
- * @version Java 22
- * modelCalculator modulates tha main components
+ * modelCalculator modulates tha main components for the application
  */
 public class modelCalculator extends JFrame {
 
-    //Variablat e fushes te nevojshme per modelim
+    //Declaring the neccesary variables
     JFrame frame;
     JTextField textField;
     JTextArea textArea;
@@ -33,15 +36,9 @@ public class modelCalculator extends JFrame {
     Color hoverBackground = new Color(56, 56, 56);
     Color hoverForeground = new Color(156, 147, 146);
 
+    
     /**
-     * modelCalculator Konstruktori i zbrazet (default)
-     */
-    public modelCalculator() {
-
-    }
-
-    /**
-     * settingFrame Krijon frejmin(dritaren) duke i dhene emer dhe dimensionet e caktuara
+     * settingFrame - sets the frame with given dimensions and tittle
      */
     public void settingFrame() {
 
@@ -50,34 +47,32 @@ public class modelCalculator extends JFrame {
         frame.setSize(screenSize.width + 13, screenSize.height + 7);
         frame.setLocation(-6, 0);
         frame.setLayout(null);
-        frame.getContentPane().setBackground(Color.black); //Ngjyros prapvine me te zeze
-        frame.setResizable(false); //E bene frejmin te pazmadhueshem
+        frame.getContentPane().setBackground(Color.black); //it sets the backround color black 
+        frame.setResizable(false);
 
-        //Ne raste se ikona deshton te lexohet kape nje excpetion te tipit IOException, duke dhene nje mesazh!
+        //If the URL for the specified image can't be loaded or finded, an IOException is thrown!
         try {
             Image iconImage = ImageIO.read(modelCalculator.class.getResource("./Icon.png"));
             frame.setIconImage(iconImage); //E vendos ikonen e frejmit
         } catch (IOException e) {
-            System.out.println("Ikona e frame-it nuk mund te ngarkohet: " + e.getMessage());
+            System.out.println("The icon cannot be loaded: " + e.getMessage());
         }
 
     }
     
     /**
-     * numbuttonsMouseAdapter kthene si rezultat nje MouseAdapter dhe vendos
-     * MouseEvent per butonat qe permbajne numra
+     * numbuttonsMouseAdapter - returns a MouseAdapter which sets
+     * a MouseEvent for the number buttons.
      *
-     * @param index - indexi i numButonit
+     * @param index - the indes of numButton array
      * @return MouseAdapter
      */
     public MouseAdapter numbuttonsMouseAdapter(int index) {
         return new MouseAdapter() {
             /**
-             * mouseEntered Kur e vendosim mousin mbi butonin me index te
-             * caktuar i ndrrojm prapavijen dhe ngjyren e fontit
-             *
-             * @param e - MouseEventi
-             * @return void
+             * The background and foreground of the buttons change if the mouse
+             * cursor is enterd on them. 
+             * @param e - The MouseEvent
              */
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -88,11 +83,9 @@ public class modelCalculator extends JFrame {
             }
 
             /**
-             * mouseExited Kur e largojme mousin nga butoni me index te caktuar,
-             * ngjyra e prapavise dhe fontit kthehen ne gjendjen fillestare
-             *
-             * @param e - MouseEventi
-             * @return void
+             * The background and foreground of the buttons change as it was before
+             * the mouse cursor eneterd on them, to make a hover effect. 
+             * @param e - The MouseEvent
              */
             @Override
             public void mouseExited(MouseEvent e) {
