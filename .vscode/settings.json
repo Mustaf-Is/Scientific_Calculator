@@ -5,7 +5,7 @@
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [],
     "editor.fontSize": 14,
-    "editor.fontFamily": "'Tahoma'",
+    "editor.fontFamily": "'consolas'",
     "files.autoSave": "onWindowChange",
     "terminal.integrated.fontFamily": "'Cascadia Code'",
     "terminal.integrated.tabs.defaultColor": "terminal.ansiGreen",

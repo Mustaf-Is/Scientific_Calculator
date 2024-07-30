@@ -14,7 +14,7 @@ import javax.swing.*;
  */
 public class modelCalculator extends JFrame {
 
-    //Declaring the neccesary variables
+    //Declaring the necessary variables
     JFrame frame;
     JTextField textField;
     JTextArea textArea;
@@ -37,7 +37,7 @@ public class modelCalculator extends JFrame {
     Color hoverForeground = new Color(156, 147, 146);
 
     /**
-     * settingFrame - sets the frame with given dimensions and tittle
+     * settingFrame - sets the frame with the given dimensions and tittle
      */
     public void settingFrame() {
 
@@ -46,7 +46,7 @@ public class modelCalculator extends JFrame {
         frame.setSize(screenSize.width + 13, screenSize.height + 7);
         frame.setLocation(-6, 0);
         frame.setLayout(null);
-        frame.getContentPane().setBackground(Color.black); //it sets the backround color black 
+        frame.getContentPane().setBackground(Color.black); 
         frame.setResizable(false);
 
         //If the URL for the specified image can't be loaded or finded, an IOException is thrown!
@@ -63,14 +63,14 @@ public class modelCalculator extends JFrame {
      * numbuttonsMouseAdapter - returns a MouseAdapter which sets a MouseEvent
      * for the number buttons.
      *
-     * @param index - the index of an element in numButtons array
+     * @param index - selects the element at given index from numButtons array
      * @return MouseAdapter
      */
     public MouseAdapter numbuttonsMouseAdapter(int index) {
         return new MouseAdapter() {
             /**
-             * The background and foreground of the buttons change if the mouse
-             * cursor is enterd on them.
+             * The background and foreground of the number buttons change if the
+             * mouse cursor is enterd on them.
              *
              * @param e - The event which indicates that a mouse action occurred
              */
@@ -100,18 +100,19 @@ public class modelCalculator extends JFrame {
     }
 
     /**
-     * fButtonsMouseAdapter - returns a MouseAdapter which sets a MouseEvent 
-     * for the function buttons
-     * @param index - the index of buttons
+     * fButtonsMouseAdapter - returns a MouseAdapter which sets a MouseEvent for
+     * the function buttons
+     *
+     * @param index - selects the element at given index from fButtons array
      * @return MouseAdapter
      */
     public MouseAdapter fbuttonsMouseAdapter(int index) {
         return new MouseAdapter() {
             /**
-             * mouseEntered Kur e vendosim mousin mbi butonin me index te
-             * caktuar i ndrrojm prapavijen dhe ngjyren e fontit
+             * The background and foreground of the function buttons change if
+             * the mouse cursor is enterd on them.
              *
-             * @param e - MouseEventi
+             * @param e - The event which indicates that a mouse action occurred
              */
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -122,10 +123,10 @@ public class modelCalculator extends JFrame {
             }
 
             /**
-             * mouseExited Kur e largojme mousin nga butoni me index te caktuar,
-             * ngjyra e prapavise dhe fontit kthehen ne gjendjen fillestare
+             * The background and foreground of the buttons change as it was
+             * before the mouse cursor eneterd on them, to make a hover effect.
              *
-             * @param e - MouseEventi
+             * @param e - The event which indicates that a mouse action ocurred
              */
             @Override
             public void mouseExited(MouseEvent e) {
@@ -139,12 +140,10 @@ public class modelCalculator extends JFrame {
     }
 
     /**
-     * drawButtons e bene ngjyrosjen, caktimin e fontit dhe madhesine e butonave
-     *
-     * @return void
+     * drawButtons - It draws the buttons setting the font, size and color of
+     * them.
      */
     public void drawButtons() {
-        //Krijimi i butonave per funksione 
         addButton = new JButton("+");
         subButton = new JButton("-");
         mulButton = new JButton("x");
@@ -175,7 +174,6 @@ public class modelCalculator extends JFrame {
         negativeButton = new JButton("(-)");
         clearHistoryButton = new JButton("🗑");
 
-        //Vendosja e butonave per funksione ne Vargun fButtons(ne te cilin ruhen te gjitha butonat per funksione)
         fButtons[0] = ceilButton;
         fButtons[1] = floorButton;
         fButtons[2] = eButton;
@@ -213,11 +211,10 @@ public class modelCalculator extends JFrame {
         clearHistoryButton.setForeground(Color.white);
         clearHistoryButton.addMouseListener(new MouseAdapter() {
             /**
-             * mouseEntered Kur e vendosim mousin mbi butonin clearHistoryButton
-             * i ndrrojm prapavijen dhe ngjyren e fontit
+             * The background and foreground of the clearHistory button changes
+             * if the mouse cursor is enterd on it.
              *
-             * @param e - MouseEventi
-             * @return void
+             * @param e - The event which indicates that a mouse action ocurred
              */
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -227,11 +224,11 @@ public class modelCalculator extends JFrame {
             }
 
             /**
-             * mouseExited Kur e largojme mousin nga butoni clearHistoryButton,
-             * ngjyra e prapavise dhe fontit kthehen ne gjendjen fillestare
+             * The background and foreground of the clearHistory button changes
+             * as it was before the mouse cursor eneterd on it, to make a hover
+             * effect.
              *
-             * @param e - MouseEventi
-             * @return void
+             * @param e - The event which indicates that a mouse action ocurred
              */
             @Override
             public void mouseExited(MouseEvent e) {
@@ -241,24 +238,23 @@ public class modelCalculator extends JFrame {
         });
 
         for (int i = 0; i < fButtons.length; i++) {
-            fButtons[i].setBackground(fbuttonsColor); //Ngjyrosja e prapavise te fButttons
-            //Tre butonat eqButton(=), clrButton(c) dhe delButton(del) kane ngjyre te ndryshme te prapavise per tu vequar nga butonat e tjere
+            fButtons[i].setBackground(fbuttonsColor);
             eqButton.setBackground(new Color(191, 146, 10));
             clrButton.setBackground(new Color(71, 2, 14));
             delButton.setBackground(new Color(125, 44, 4));
-            fButtons[i].setForeground(Color.white); //Ngjyrosja e fontit
-            fButtons[i].setFont(buttonsFont); //Caktimi i lloit te fontit
+            fButtons[i].setForeground(Color.white);
+            fButtons[i].setFont(buttonsFont);
             clrButton.setFont(new Font("SF Pro", Font.TYPE1_FONT, 25));
             delButton.setFont(new Font("SF Pro", Font.TYPE1_FONT, 25));
-            fButtons[i].addMouseListener(fbuttonsMouseAdapter(i)); //Invokimi i metodes fbuttonsMouseAdapter
-            //Tre butonat eqButton(=), clrButton(c) dhe delButton(del) marrin ngjyra te ndryshme te prapavise kur ta vendosim mousin mbi to
+            fButtons[i].addMouseListener(fbuttonsMouseAdapter(i));
+            // clrButton, eqButton and delButton have different colors so the hover effect appears differently on them!
             clrButton.addMouseListener(new MouseAdapter() {
                 /**
-                 * mouseEntered Kur e vendosim mousin mbi butonin clrButton i
-                 * ndrrojm prapavijen dhe ngjyren e fontit
+                 * The background and foreground of the clr button changes if
+                 * the mouse cursor is enterd on it.
                  *
-                 * @param e - MouseEventi
-                 * @return void
+                 * @param e - The event which indicates that a mouse action
+                 * ocurred
                  */
                 @Override
                 public void mouseEntered(MouseEvent e) {
@@ -267,11 +263,12 @@ public class modelCalculator extends JFrame {
                 }
 
                 /**
-                 * mouseExited Kur e largojme mousin nga butoni clrButton,
-                 * ngjyra e prapavise dhe fontit kthehen ne gjendjen fillestare
+                 * The background and foreground of the clr button changes as it
+                 * was before the mouse cursor eneterd on it, to make a hover
+                 * effect.
                  *
-                 * @param e - MouseEventi
-                 * @return void
+                 * @param e - The event which indicates that a mouse action
+                 * ocurred
                  */
                 @Override
                 public void mouseExited(MouseEvent e) {
@@ -281,11 +278,11 @@ public class modelCalculator extends JFrame {
             });
             eqButton.addMouseListener(new MouseAdapter() {
                 /**
-                 * mouseEntered Kur e vendosim mousin mbi butonin eqButton i
-                 * ndrrojm prapavijen dhe ngjyren e fontit
+                 * The background and foreground of the eq button changes if the
+                 * mouse cursor is enterd on it.
                  *
-                 * @param e - MouseEventi
-                 * @return void
+                 * @param e - The event which indicates that a mouse action
+                 * ocurred
                  */
                 @Override
                 public void mouseEntered(MouseEvent e) {
@@ -294,11 +291,12 @@ public class modelCalculator extends JFrame {
                 }
 
                 /**
-                 * mouseExited Kur e largojme mousin nga butoni eqButton, ngjyra
-                 * e prapavise dhe fontit kthehen ne gjendjen fillestare
+                 * The background and foreground of the eq button changes as it
+                 * was before the mouse cursor eneterd on it, to make a hover
+                 * effect.
                  *
-                 * @param e - MouseEventi
-                 * @return void
+                 * @param e - The event which indicates that a mouse action
+                 * ocurred
                  */
                 @Override
                 public void mouseExited(MouseEvent e) {
@@ -308,11 +306,11 @@ public class modelCalculator extends JFrame {
             });
             delButton.addMouseListener(new MouseAdapter() {
                 /**
-                 * mouseEntered Kur e vendosim mousin mbi butonin delButton i
-                 * ndrrojm prapavijen dhe ngjyren e fontit
+                 * The background and foreground of the del button changes if
+                 * the mouse cursor is enterd on it.
                  *
-                 * @param e - MouseEventi
-                 * @return void
+                 * @param e - The event which indicates that a mouse action
+                 * ocurred
                  */
                 @Override
                 public void mouseEntered(MouseEvent e) {
@@ -321,11 +319,12 @@ public class modelCalculator extends JFrame {
                 }
 
                 /**
-                 * mouseExited Kur e largojme mousin nga butoni delButton,
-                 * ngjyra e prapavise dhe fontit kthehen ne gjendjen fillestare
+                 * The background and foreground of the del button changes as it
+                 * was before the mouse cursor eneterd on it, to make a hover
+                 * effect.
                  *
-                 * @param e - MouseEventi
-                 * @return void
+                 * @param e - The event which indicates that a mouse action
+                 * ocurred
                  */
                 @Override
                 public void mouseExited(MouseEvent e) {
@@ -333,33 +332,32 @@ public class modelCalculator extends JFrame {
                     delButton.setForeground(Color.white);
                 }
             });
-            fButtons[i].setBorder(null); // E fshin kornizen e buttonave
-            fButtons[i].setFocusable(false); // E ndryshon gjendjen e fokusshmerise ne false
+            fButtons[i].setBorder(null);
+            fButtons[i].setFocusable(false);
         }
 
         for (int i = 0; i < numButtons.length; i++) {
             numButtons[i] = new JButton(i + "");
-            numButtons[i].setBackground(numbuttonsColor); //Ngjyrosja e prapavise se butonave
-            numButtons[i].setForeground(Color.WHITE); //Ngyrosja e Fontit
-            numButtons[i].setFont(buttonsFont); //Ndryshimi i llojit te fontit
-            numButtons[i].addMouseListener(numbuttonsMouseAdapter(i)); //Invokimi i metodes numbuttonsMouseAdapter
-            numButtons[i].setBorder(null); // E fshin kornizen e buttonave
-            numButtons[i].setFocusable(false); // E ndryshon gjendjen e fokusshmerise ne false
+            numButtons[i].setBackground(numbuttonsColor);
+            numButtons[i].setForeground(Color.WHITE);
+            numButtons[i].setFont(buttonsFont);
+            numButtons[i].addMouseListener(numbuttonsMouseAdapter(i));
+            numButtons[i].setBorder(null);
+            numButtons[i].setFocusable(false);
         }
     }
 
     /**
-     * addComponets Bene shtimin e komponenteve ne frame
+     * addComponets - It adds the components in the frame.
      */
     public void addComponents() {
-        // Percaktimi i labelit per paraqitje tekstuale te kalkulimeve
+
         label.setBounds(2, 20, 1192, 100);
         label.setForeground(Color.WHITE);
         label.setFont(labeFont);
         label.setHorizontalAlignment(SwingConstants.RIGHT);
         label.setFocusable(false);
 
-        // label per emertimin e Historise te kalkulimeve
         stringLabel = new JLabel("History " + '\u21BB');
         stringLabel.setFont(new Font("SF Pro", Font.BOLD, 35));
         stringLabel.setBounds(1215, 20, 200, 80);
@@ -367,18 +365,16 @@ public class modelCalculator extends JFrame {
         stringLabel.setBackground(Color.BLACK);
         stringLabel.setForeground(Color.white);
 
-        //paneli per vendosjen e butonave 
         panel = new JPanel();
         panel.setBounds(0, 300, 1200, 480);
-        panel.setLayout(new GridLayout(7, 5, 4, 4)); //Paraqitja ne formen grid, ku butonat kane madhesi si dhe largesi te njejte
+        panel.setLayout(new GridLayout(7, 5, 4, 4));
         panel.setBackground(Color.black);
-        //panel1 per vendosjen e clrButton-it dhe delButton-it
+
         panel1 = new JPanel();
         panel1.setBounds(2, 200, 1198, 95);
         panel1.setLayout(new GridLayout(1, 2, 5, 4));
         panel1.setBackground(Color.black);
 
-        //Percaktimi i Textfield per parqitjen e numrave te shtypur
         textField = new JTextField();
         textField.setBounds(2, 90, 1195, 105);
         textField.setBackground(new Color(30, 30, 31));
@@ -390,7 +386,6 @@ public class modelCalculator extends JFrame {
         textField.setFocusable(false);
         textField.setText("0");
 
-        //TextArea per shfaqjene Historise se kalkulimeve
         textArea = new JTextArea();
         textArea.setBounds(1205, 90, 327, 695);
         textArea.setBackground(new Color(30, 30, 31));
@@ -398,9 +393,6 @@ public class modelCalculator extends JFrame {
         textArea.setFont(new Font("Arial", Font.TRUETYPE_FONT, 25));
         textArea.setEditable(false);
         textArea.setMargin(new Insets(15, 20, 10, 10));
-        // Ne momentin kur textArea kalon dimensionet e caktuara vertikale dhe horizontale athere 
-        // scrollPane krijon scrollBars per ti shfaqur te dhenat qe kalojn jasht dimensioneve 
-        // 
         scrollPane = new JScrollPane(textArea);
         scrollPane.setBounds(1205, 90, 327, 690);
         scrollPane.setBackground(new Color(30, 30, 31));
@@ -410,7 +402,6 @@ public class modelCalculator extends JFrame {
         scrollPane.setAlignmentX(JTextArea.CENTER_ALIGNMENT);
         scrollPane.setAlignmentY(JTextArea.TOP_ALIGNMENT);
 
-        //Futja e butonave brenda Panelit
         panel1.add(clrButton);
         panel1.add(delButton);
         for (int i = 0; i <= 14; i++) {
@@ -437,7 +428,7 @@ public class modelCalculator extends JFrame {
         panel.add(numButtons[0]);
         panel.add(fButtons[23]);
         panel.add(fButtons[24]);
-        //Shtimi i komponenteve ne frame
+
         frame.add(panel);
         frame.add(panel1);
         frame.add(label);
@@ -445,7 +436,7 @@ public class modelCalculator extends JFrame {
         frame.add(stringLabel);
         frame.add(scrollPane);
         frame.add(textField);
-        frame.setVisible(true); //Shfaqja e Frejmit(Dritares)
+        frame.setVisible(true);
     }
 
 }

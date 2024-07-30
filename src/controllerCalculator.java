@@ -75,11 +75,13 @@ public class controllerCalculator extends modelCalculator implements ActionListe
                     textField.setText("");
                     label.setText("");
                 }
+
                 if (isPressed == true) {
                     textField.setText("");
                     label.setText("");
                     isPressed = false;
                 }
+                
                 if (state == true) {
                     textField.setText("");
                     state = false;
