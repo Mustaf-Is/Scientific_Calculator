@@ -1,7 +1,3 @@
-/**
- * @author Mustafë Ismajli
- * @version 22.0.1
- */
 
 import java.awt.*;
 import java.awt.event.*;
@@ -10,7 +6,11 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
- * modelCalculator modulates tha main components for the application
+ * modelCalculator modulates tha main GUI components for the application. It
+ * sets how the application looks visually.
+ *
+ * @author Mustafë Ismajli
+ * @version 22.0.1
  */
 public class modelCalculator extends JFrame {
 
@@ -46,7 +46,7 @@ public class modelCalculator extends JFrame {
         frame.setSize(screenSize.width + 13, screenSize.height + 7);
         frame.setLocation(-6, 0);
         frame.setLayout(null);
-        frame.getContentPane().setBackground(Color.black); 
+        frame.getContentPane().setBackground(Color.black);
         frame.setResizable(false);
 
         //If the URL for the specified image can't be loaded or finded, an IOException is thrown!
